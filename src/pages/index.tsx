@@ -1,1 +1,3 @@
-export const a = 'sasasa';
+import { Counter } from './Counter/Counter';
+
+export { Counter };
