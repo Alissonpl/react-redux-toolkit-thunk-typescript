@@ -11,7 +11,6 @@ const Routes = () => {
         {userSlice.map((item, index) => (
           <Route key={index} exact path={item.route} component={item.component} />
         ))}
-        <Route path='*' render={() => <Redirect to='/Dashboard' />} />
       </Switch>
     </BrowserRouter>
   );

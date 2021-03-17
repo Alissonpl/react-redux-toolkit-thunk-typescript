@@ -1,0 +1,10 @@
+{
+  "workbench.colorTheme": "BeardedTheme Anthracite",
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "workbench.iconTheme": "bearded-icons",
+  "window.zoomLevel": 0,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "git.confirmSync": false
+}

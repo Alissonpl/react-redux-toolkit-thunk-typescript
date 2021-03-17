@@ -1,5 +1,4 @@
-import { Counter } from '../../pages/index';
-
+import { Counter, Search } from '../../pages/index';
 interface userState {
   route: string;
   key: string;
@@ -11,6 +10,7 @@ interface userState {
 const initialState: userState[] = [
   { route: '/counter', key: 'counter', module: 'counter', menu: true, component: Counter },
   { route: '/sair', key: 'Sair', module: 'sair', menu: true, component: Counter },
+  { route: '/search', key: 'search', module: 'search', menu: true, component: Search },
 ];
 
 export default initialState;
