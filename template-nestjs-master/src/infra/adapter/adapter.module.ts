@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 import { ConnectorsModule } from '../connectors/connectors.module';
-
+import { ImageVideoAdapter } from './imageVideo/imageVideAdapter.provider'
 @Module({
-  imports: [ConnectorsModule],
+  imports: [ConnectorsModule, ImageVideoAdapter],
   providers: [],
-  exports: [],
+  exports: [ImageVideoAdapter],
 })
-export class AdapterModule {}
+export class AdapterModule { }
