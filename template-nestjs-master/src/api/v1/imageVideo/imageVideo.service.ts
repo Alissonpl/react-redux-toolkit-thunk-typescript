@@ -3,7 +3,7 @@ import { ImageVideoParamsRequest } from './infra/request/imageVideoParamsRequest
 import ImageVideoResource from './infra/response/imageVideoRequest'
 import { ImageVideoAdapter } from '../../../infra/adapter/imageVideo/imageVideAdapter.provider'
 import { ImageVideoReceiveContract } from '../../../infra/adapter/imageVideo/contracts/receive/imageVideoReceiveContract'
-import ImageVideoMapper from './infra/mappers/imageVideoMappers'
+import { ImageVideoMapper } from './infra/mappers/imageVideoMappers'
 
 
 @Injectable()

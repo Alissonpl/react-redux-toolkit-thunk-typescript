@@ -4,7 +4,7 @@ import { ImageVideoReceiveContract } from '../../../../../infra/adapter/imageVid
 import ImageVideoResource from '../response/imageVideoRequest'
 
 
-export default class ImageVideoMapper {
+export class ImageVideoMapper {
     static contractToResource(
         imageVideoReceiveContract: ImageVideoReceiveContract,
     ): ImageVideoResource {

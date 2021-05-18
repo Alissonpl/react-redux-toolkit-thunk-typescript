@@ -13,12 +13,10 @@ export class ImageVideoAdapter {
 
     constructor(private readonly httpService: HttpService) { }
 
-    async getImageVideo(search: ImageVideoSendContract): Promise<ImageVideoReceiveContract> {
+    async getImageVideo({ search }: ImageVideoSendContract): Promise<ImageVideoReceiveContract> {
+
         try {
             const url = `${this.BASEPATH_NASA}/search?q=${search}`;
-            // const config: AxiosRequestConfig = {
-            //     headers: { Authorization: token },
-            // };
             return this.httpService
                 .get(url)
                 .toPromise()

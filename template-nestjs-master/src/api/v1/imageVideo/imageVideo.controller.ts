@@ -30,6 +30,7 @@ export class ImageVideoController {
     @Res() res,
   ): Promise<ImageVideoResource> {
     const response: ImageVideoResource = await this.imageVideoService.getImageVideo(search);
+    console.log(response)
     return res.status(200).json(response)
   }
 }
