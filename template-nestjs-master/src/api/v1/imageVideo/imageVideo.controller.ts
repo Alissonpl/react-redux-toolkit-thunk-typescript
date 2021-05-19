@@ -3,7 +3,7 @@ import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { ImageVideoService } from './imageVideo.service';
 import { ImageVideoParamsRequest } from './infra/request/imageVideoParamsRequest'
 import ImageVideoResource from './infra/response/imageVideoRequest'
-
+@ApiTags('Image e Video - Nasa')
 @Controller()
 export class ImageVideoController {
   constructor(private readonly imageVideoService: ImageVideoService) { }
@@ -30,7 +30,6 @@ export class ImageVideoController {
     @Res() res,
   ): Promise<ImageVideoResource> {
     const response: ImageVideoResource = await this.imageVideoService.getImageVideo(search);
-    console.log(response)
     return res.status(200).json(response)
   }
 }
