@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Div, ButtonSearch } from './styles';
 import LogoSearch from '../../../../../assets/images/logo-search.png';
@@ -8,10 +8,11 @@ import SearchIcon from '../../atoms/SearchIcon';
 import { Button } from '@material-ui/core';
 
 const HeaderSearch: React.FC = () => {
+  const [search, setSearch] = useState<string>('');
   return (
     <Div>
       <ImgSearch src={LogoSearch} />
-      <Input type='text' variant='outlined' />
+      <Input value={search} type='text' variant='outlined' onChange={setSearch} />
       <Button variant='contained' color='primary' style={ButtonSearch}>
         <SearchIcon />
       </Button>
