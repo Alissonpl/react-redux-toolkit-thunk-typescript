@@ -48,7 +48,7 @@
     "husky": {
         "hooks": {
             "pre-push": "yarn lint",
-            "pre-commit": "pretty-quick --staged"
+            "pre-commit": "pretty-quick --staged --no-verify"
         }
     },
     "eslintConfig": {
