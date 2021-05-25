@@ -1,8 +1,8 @@
-import { Module } from '@nestjs/common';
+import { Module, HttpModule } from '@nestjs/common';
 
 @Module({
-  imports: [],
+  imports: [HttpModule],
   providers: [],
-  exports: [],
+  exports: [HttpModule],
 })
-export class ConnectorsModule {}
+export class ConnectorsModule { }

@@ -6,19 +6,17 @@ import {
 } from '@nestjs/common';
 // import { AxiosRequestConfig } from 'axios';
 import { ImageVideoReceiveContract } from './contracts/receive/imageVideoReceiveContract';
-
+import { ImageVideoSendContract } from './contracts/send/imageVideoSendContract'
 @Injectable()
 export class ImageVideoAdapter {
     private BASEPATH_NASA = process.env.BASEPATH_NASA;
 
     constructor(private readonly httpService: HttpService) { }
 
-    async getImageVideo(search: string): Promise<ImageVideoReceiveContract> {
+    async getImageVideo({ search }: ImageVideoSendContract): Promise<ImageVideoReceiveContract> {
+
         try {
             const url = `${this.BASEPATH_NASA}/search?q=${search}`;
-            // const config: AxiosRequestConfig = {
-            //     headers: { Authorization: token },
-            // };
             return this.httpService
                 .get(url)
                 .toPromise()

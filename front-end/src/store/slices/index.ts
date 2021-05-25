@@ -1,3 +1,4 @@
 import countSlice from './counterSlice';
 import userSlice from './userSlice';
-export { countSlice, userSlice };
+import searchSlice from './searchSlice';
+export { countSlice, userSlice, searchSlice };
