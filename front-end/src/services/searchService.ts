@@ -1,15 +1,18 @@
-import { axiosInstanceSearch } from './index';
+import { axiosInstanceSearch } from "./index";
 
-const pathSearch = 'image-video';
+const pathSearch = "image-video";
 
 const getSearch = async (dateSearch: string) => {
-    try {
-        const response = await axiosInstanceSearch.get(`/${pathSearch}?q=${dateSearch}`, {});
-        console.log(response);
-        return response;
-    } catch (error) {
-        console.error(error);
-    }
+  try {
+    const response = await axiosInstanceSearch.get(
+      `/${pathSearch}?search=${dateSearch}`,
+      {}
+    );
+
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 export { getSearch };
