@@ -1,3 +1,4 @@
+import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
@@ -5,7 +6,9 @@ import { AppModule } from './app.module';
 require('dotenv').config();
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, {
+    cors: true,
+  });
   app.setGlobalPrefix(process.env.BASEPATH);
   const options = new DocumentBuilder()
     .setTitle(process.env.npm_package_name)
@@ -13,7 +16,23 @@ async function bootstrap() {
     .setVersion(process.env.npm_package_version)
     .build();
   const document = SwaggerModule.createDocument(app, options);
-  SwaggerModule.setup(`${process.env.BASEPATH}/docs`, app, document);
-  await app.listen(3000);
+  const optionsSwagger =
+    process.env.NODE_ENV === 'development'
+      ? {}
+      : {
+          swaggerOptions: {
+            supportedSubmitMethods: [],
+          },
+        };
+  SwaggerModule.setup(
+    `${process.env.BASEPATH}/docs`,
+    app,
+    document,
+    optionsSwagger,
+  );
+  app.setGlobalPrefix(process.env.BASEPATH);
+  app.useGlobalPipes(new ValidationPipe({ transform: true }));
+
+  await app.listen(8080);
 }
 bootstrap();
