@@ -1,25 +1,54 @@
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
-import { AppThunk, RootState } from "../configureStore";
+import { RootState } from "../configureStore";
 import { getSearch } from "../../services/index";
 
-export interface SearchState {
-  value: string;
+interface MetaData {
+  total_hits: number;
+}
+interface LinksItems {
+  rel: string;
+  href: string;
+  render: string;
 }
 
-interface GenericState<T> {
-  data?: T;
+interface Items {
+  links: LinksItems;
+  data: any[];
+  href: string;
+}
+
+interface LinksCollection {
+  href: string;
+  prompt: string;
+  rel: string;
+}
+
+interface Collection {
+  href: string;
+  items: Items[];
+  links: LinksCollection[];
+  metadata: MetaData;
+  version: string;
+}
+interface Search {
+  collection: Collection;
+  status: string;
+}
+
+interface SearchState {
+  value: Search;
 }
 
 const initialState: SearchState = {
-  value: "",
+  value: { collection: null, status: "" },
 };
 
 export const searchAsync = createAsyncThunk(
   "search/getSearch",
   async (amount: string) => {
-    const response = await getSearch(amount);
-    console.log(response);
-    return response;
+    const { collection } = await getSearch(amount);
+    const status = await "ativo";
+    return { collection, status };
   }
 );
 
@@ -28,9 +57,12 @@ export const searchSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(searchAsync.fulfilled, (state, action) => {
-      state.value += action.payload;
-    });
+    builder.addCase(
+      searchAsync.fulfilled,
+      (state, action: PayloadAction<Search>) => {
+        state.value = action.payload;
+      }
+    );
   },
 });
 

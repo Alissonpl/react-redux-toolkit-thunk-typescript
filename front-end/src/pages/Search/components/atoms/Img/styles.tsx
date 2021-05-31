@@ -1,10 +1,7 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const ImgStyles = styled.img`
   max-height: 150px;
-  margin: 25px;
+  margin: 15px;
   border-radius: 6px;
-  ${styled.img}:hover & {
-    max-height: 300px;
-  }
 `;

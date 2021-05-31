@@ -1,35 +1,36 @@
-import React from 'react';
-import { Div } from './styles';
-import Img from '../../atoms/Img';
-import LogoSearch from '../../../../../assets/images/logo-search.png';
-import { Grid } from '@material-ui/core';
+import React from "react";
+
+import { Div } from "./styles";
+import Img from "../../atoms/Img";
+import LogoSearch from "../../../../../assets/images/logo-search.png";
+import { useAppSelector } from "../../../../../hooks/storeHook";
+import { selectSearch } from "../../../../../store/slices/searchSlice";
+
 const InfoSearched: React.FC = () => {
+  const dataSearch = useAppSelector(selectSearch);
+  console.log(dataSearch);
   return (
-    <>
-      <a>Imagens:</a>
-      <Div>
-        <Img src={LogoSearch} />
-        <Img src={LogoSearch} />
-        <Img src={LogoSearch} />
-        <Img src={LogoSearch} />
-        <Img src={LogoSearch} />
-        <Img src={LogoSearch} />
-        <Img src={LogoSearch} />
-        <Img src={LogoSearch} />
-        <Img src={LogoSearch} />
-        <Img src={LogoSearch} />
-        <Img src={LogoSearch} />
-        <Img src={LogoSearch} />
-        <Img src={LogoSearch} />
-        <Img src={LogoSearch} />
-        <Img src={LogoSearch} />
-        <Img src={LogoSearch} />
-        <Img src={LogoSearch} />
-        <Img src={LogoSearch} />
-        <Img src={LogoSearch} />
-        <a>lsonanskan</a>
-      </Div>
-    </>
+    <Div>
+      <Img src={LogoSearch} />
+      <Img src={LogoSearch} />
+      <Img src={LogoSearch} />
+      <Img src={LogoSearch} />
+      <Img src={LogoSearch} />
+      <Img src={LogoSearch} />
+      <Img src={LogoSearch} />
+      <Img src={LogoSearch} />
+      <Img src={LogoSearch} />
+      <Img src={LogoSearch} />
+      <Img src={LogoSearch} />
+      <Img src={LogoSearch} />
+      <Img src={LogoSearch} />
+      <Img src={LogoSearch} />
+      <Img src={LogoSearch} />
+      <Img src={LogoSearch} />
+      <Img src={LogoSearch} />
+      <Img src={LogoSearch} />
+      <Img src={LogoSearch} />
+    </Div>
   );
 };
 
