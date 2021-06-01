@@ -1,42 +1,32 @@
 import React, { useEffect, useState } from "react";
 
+import { CircularProgress } from "@material-ui/core";
+
 import { Div } from "./styles";
 import Img from "../../atoms/Img";
-import LogoSearch from "../../../../../assets/images/logo-search.png";
 import { useAppSelector } from "../../../../../hooks/storeHook";
 import { selectSearch } from "../../../../../store/slices/searchSlice";
-
+import CardImg from "../CardImg";
+import Items from "../../../../../@types/items";
 const InfoSearched: React.FC = () => {
   const dataSearch = useAppSelector(selectSearch);
-  const [itemPreview, setItemPreview] = useState([]);
-  console.log(dataSearch);
+  const [itemPreview, setItemPreview] = useState<Items[]>([]);
+  const [view, setView] = useState<Boolean>(false);
 
   useEffect(() => {
     setItemPreview(dataSearch.collection?.items);
+    setView(true);
   }, [dataSearch]);
 
   return (
-    <Div>
-      {itemPreview ? (
-        itemPreview.map((item) => {
-          return (
-            <div
-              style={{ display: "flex", flexDirection: "column", width: 100 }}
-            >
-              {item.links.map((item) => {
-                return <Img src={item.href} />;
-              })}
-
-              {item.data.map((item) => {
-                return <span>{item?.title}</span>;
-              })}
-            </div>
-          );
-        })
-      ) : (
-        <span style={{ color: "red" }}>não existe</span>
-      )}
-    </Div>
+    view && (
+      <Div>
+        {itemPreview &&
+          itemPreview.map((item) => {
+            return <CardImg {...item} />;
+          })}
+      </Div>
+    )
   );
 };
 
