@@ -1,43 +1,44 @@
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
 import { RootState } from "../configureStore";
 import { getSearch } from "../../services/index";
+import SearchState from "../../@types/searchState";
+import Search from "../../@types/search";
+// export default interface MetaData {
+//   total_hits: number;
+// }
+// export default interface LinksItems {
+//   rel: string;
+//   href: string;
+//   render: string;
+// }
 
-interface MetaData {
-  total_hits: number;
-}
-interface LinksItems {
-  rel: string;
-  href: string;
-  render: string;
-}
+// export default interface Items {
+//   links: LinksItems;
+//   data: any[];
+//   href: string;
+// }
 
-interface Items {
-  links: LinksItems;
-  data: any[];
-  href: string;
-}
+// export default interface LinksCollection {
+//   href: string;
+//   prompt: string;
+//   rel: string;
+// }
 
-interface LinksCollection {
-  href: string;
-  prompt: string;
-  rel: string;
-}
+// export default interface Collection {
+//   href: string;
+//   items: Items[];
+//   links: LinksCollection[];
+//   metadata: MetaData;
+//   version: string;
+// }
+// export default interface Search {
+//   collection: Collection;
+//   status: string;
+// }
 
-interface Collection {
-  href: string;
-  items: Items[];
-  links: LinksCollection[];
-  metadata: MetaData;
-  version: string;
-}
-interface Search {
-  collection: Collection;
-  status: string;
-}
-
-interface SearchState {
-  value: Search;
-}
+// export default interface SearchState {
+//   value: Search;
+// }
 
 const initialState: SearchState = {
   value: { collection: null, status: "" },
