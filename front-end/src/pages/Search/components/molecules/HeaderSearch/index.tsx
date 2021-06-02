@@ -19,14 +19,22 @@ const HeaderSearch: React.FC = () => {
 
   const changeSeachLocation = () => {
     const newSeach = location.search.split("=")[1];
-    setSearch(newSeach);
-    dispatch(searchAsync(newSeach));
+    if (newSeach) {
+      setSearch(newSeach);
+      dispatch(searchAsync(newSeach));
+    }
   };
 
   useEffect(() => {
     changeSeachLocation();
   }, [location]);
 
+  const changeSeach = () => {
+    if (search) {
+      dispatch(searchAsync(search));
+      history.push(`/search?q=${search}`);
+    }
+  };
   return (
     <Div>
       <ImgSearch src={LogoSearch} />
@@ -41,10 +49,7 @@ const HeaderSearch: React.FC = () => {
           variant="contained"
           color="primary"
           style={ButtonSearch}
-          onClick={() => {
-            dispatch(searchAsync(search));
-            history.push(`/search?q=${search}`);
-          }}
+          onClick={() => changeSeach()}
         >
           <SearchIcon />
         </Button>
