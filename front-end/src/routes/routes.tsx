@@ -9,7 +9,12 @@ const Routes = () => {
     <BrowserRouter>
       <Switch>
         {userSlice.map((item, index) => (
-          <Route key={index} path={item.route} component={item.component} />
+          <Route
+            key={index}
+            exact
+            path={item.route}
+            component={item.component}
+          />
         ))}
       </Switch>
     </BrowserRouter>
